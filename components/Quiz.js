@@ -2,6 +2,7 @@
 // QUIZ: mostra uma pergunta por vez, envia a resposta ao banco (função "responder") e exibe o resultado.
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { criarClienteNavegador } from '../lib/supabase/client'
 
 export default function Quiz({ perguntas }) {
@@ -10,6 +11,7 @@ export default function Quiz({ perguntas }) {
   const [escolha, setEscolha] = useState(null)
   const [total, setTotal] = useState(0)  // XP ganho nesta rodada
   const supabase = criarClienteNavegador()
+  const router = useRouter()
   const q = perguntas[i]
 
   // Envia a opção escolhida. Quem confere o acerto e dá o XP é o BANCO, nunca o navegador.
@@ -19,6 +21,7 @@ export default function Quiz({ perguntas }) {
     const { data, error } = await supabase.rpc('responder', { p_pergunta: q.id, p_opcao: k })
     if (error) return setEscolha(null)
     setRes(data); setTotal((t) => t + data.xp)
+    router.refresh() // limpa o cache do navegador, para o painel e o ranking mostrarem o XP novo
   }
   const proxima = () => { setRes(null); setEscolha(null); setI(i + 1) }
 
