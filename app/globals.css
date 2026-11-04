@@ -1,36 +1,61 @@
-/* Cores da marca: troque aqui para mudar o site inteiro. */
-:root{--verde:#2ee66b;--azul:#2f6bff;--fundo:#0b1220;--cartao:#141c30;--borda:#26304d;--texto:#eef2ff;--suave:#9aa7c7}
+/* PALETA (da imagem que você enviou). Troque aqui para mudar o site inteiro. */
+:root{--c0:#06141b;--c1:#11212d;--c2:#253745;--c3:#4a5c6a;--c4:#9ba8ab;--c5:#ccd0cf;
+  --verde:#3cf08d;--verde-escuro:#052414}
 *{box-sizing:border-box;margin:0}
-/* Fundo escuro com brilhos azul e verde, para o clima tecnológico. */
-body{min-height:100vh;font:16px/1.5 system-ui,sans-serif;color:var(--texto);
-  background:radial-gradient(900px 500px at 10% -10%,#1b3fa855,transparent),radial-gradient(700px 400px at 100% 0,#1fbf6b33,transparent),var(--fundo)}
-/* Coluna central onde fica o conteúdo das páginas. */
-.pagina{max-width:860px;margin:0 auto;padding:2rem 1.25rem}
-.cartao{background:var(--cartao);border:1px solid var(--borda);border-radius:1.2rem;padding:1.5rem;margin-top:1.25rem}
-h1{font-size:2rem;line-height:1.15}
-p{color:var(--suave)}
-/* Botões: o verde é o principal; a classe "sec" faz o botão secundário (só contorno). */
-button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:.8rem;padding:.7rem 1.1rem;background:var(--verde);color:#06210f}
-button.sec{background:transparent;color:var(--texto);border:1px solid var(--borda)}
-button:focus-visible,input:focus-visible{outline:3px solid var(--azul);outline-offset:2px}
-input{width:100%;font:inherit;padding:.7rem .9rem;border-radius:.8rem;border:1px solid var(--borda);background:#0e1527;color:var(--texto)}
+/* Fundo: azul-petróleo escuro com um "feixe de luz" no canto, como na referência. */
+body{min-height:100vh;font:16px/1.55 'DM Sans',system-ui,sans-serif;color:var(--c5);
+  background:radial-gradient(1000px 650px at 0% -5%,#4a5c6a88,transparent 60%),radial-gradient(800px 500px at 100% 100%,#25374566,transparent),linear-gradient(180deg,var(--c0),var(--c1)) fixed}
+/* Títulos grandes e pesados; o .marker imita escrita à mão (como os rabiscos da referência). */
+h1,h2,h3{font-family:'Bricolage Grotesque','DM Sans',sans-serif;line-height:1.05;letter-spacing:-.02em;color:#fff}
+h1{font-size:2rem;font-weight:800}
+h3{font-size:1.3rem;margin:.5rem 0 .3rem}
+p{color:var(--c4)}
+a{color:var(--verde)}
+.verde{color:var(--verde)}
+.marker{font-family:'Permanent Marker','Bricolage Grotesque',cursive;color:var(--verde)}
+.sublinhado{background:linear-gradient(transparent 64%,#3cf08d66 64%);padding:0 .1em}
+.pagina{max-width:1080px;margin:0 auto;padding:1.2rem 1.25rem 4rem}
+/* Barra do topo em formato de pílula. */
+.barra-topo{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:.7rem 1.1rem;background:#11212dcc;border:1px solid var(--c2);border-radius:999px;backdrop-filter:blur(8px)}
+.direita{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.marca{font:800 1.3rem 'Bricolage Grotesque',sans-serif;color:#fff;text-decoration:none}
+.marca b{background:var(--verde);color:var(--verde-escuro);padding:.05rem .55rem;border-radius:.6rem;margin-right:.45rem}
+.xp-pill{background:var(--verde);color:var(--verde-escuro);font-weight:700;padding:.45rem .95rem;border-radius:999px}
+/* Cartões arredondados com leve brilho no topo. */
+.cartao{background:linear-gradient(180deg,#11212def,#0c1a24ef);border:1px solid var(--c2);border-radius:1.5rem;padding:1.5rem;margin-top:1.25rem;box-shadow:0 18px 40px #0007,inset 0 1px 0 #ffffff0f}
+.bento{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.25rem}
+.bento .cartao{margin-top:0}
+.grande{grid-column:1/-1}
+.icone{font-size:2.2rem}
+/* Cartões que são links (atalhos do painel). */
+.atalho{display:block;text-decoration:none;color:inherit;transition:transform .15s,border-color .15s}
+.atalho:hover{transform:translateY(-4px);border-color:var(--verde)}
+/* Botões em pílula: verde com brilho é o principal; .sec é só contorno. */
+button,.botao{display:inline-block;text-align:center;text-decoration:none;font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:999px;padding:.75rem 1.4rem;background:var(--verde);color:var(--verde-escuro);box-shadow:0 8px 24px #3cf08d44;transition:transform .15s}
+button:hover,.botao:hover{transform:translateY(-2px)}
+button.sec,.botao.sec{background:#ffffff0a;color:var(--c5);border:1px solid var(--c3);box-shadow:none}
+button.ok{background:var(--verde);color:var(--verde-escuro);border:0}   /* alternativa certa */
+button.no{background:#e5484d;color:#fff;border:0;box-shadow:none}        /* alternativa errada */
+button:focus-visible,input:focus-visible,.botao:focus-visible,a:focus-visible{outline:3px solid var(--verde);outline-offset:2px}
+input,select{width:100%;font:inherit;padding:.8rem 1.1rem;border-radius:999px;border:1px solid var(--c3);background:var(--c0);color:var(--c5)}
+textarea{width:100%;font:inherit;padding:.9rem 1.1rem;border-radius:1.2rem;border:1px solid var(--c3);background:var(--c0);color:var(--c5);min-height:110px;resize:vertical}
 .coluna{display:grid;gap:.7rem;margin-top:1rem}
 .topo{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
-/* Barra de XP do aluno. */
-.barra{height:14px;border-radius:1rem;background:var(--borda);overflow:hidden;margin:.6rem 0}
-.barra i{display:block;height:100%;background:linear-gradient(90deg,var(--azul),var(--verde))}
+/* Adesivos inclinados, como as notinhas da referência. */
+.notas{display:flex;gap:.8rem;flex-wrap:wrap}
+.nota{display:inline-block;transform:rotate(-3deg);background:var(--c5);color:var(--c0);font:1rem 'Permanent Marker',cursive;padding:.5rem .9rem;border-radius:.5rem;box-shadow:0 6px 16px #0006}
+.nota.verde{background:var(--verde);color:var(--verde-escuro);transform:rotate(3deg)}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:2rem;align-items:center;padding:3rem 0 1rem}
+.hero h1{font-size:clamp(2.4rem,7vw,4.4rem)}
+@media (max-width:820px){.hero{grid-template-columns:1fr}}
+/* Barra de XP com brilho. */
+.barra{height:16px;border-radius:999px;background:var(--c2);overflow:hidden;margin:.7rem 0}
+.barra i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--c3),var(--verde));box-shadow:0 0 14px #3cf08d99}
+.nivel{font:800 4rem 'Bricolage Grotesque',sans-serif;line-height:1;color:var(--verde)}
 .aviso{margin-top:.8rem;color:var(--verde)}
-.nivel{font-size:3rem;font-weight:800;line-height:1}
-/* Parte 2: grades de matérias, botão-link, alternativas do quiz e tabelas. */
-.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:1rem}
-.botao{display:inline-block;text-decoration:none;font-weight:700;border-radius:.8rem;padding:.7rem 1.1rem;background:var(--verde);color:#06210f}
-.botao.sec{background:transparent;color:var(--texto);border:1px solid var(--borda)}
-button.ok{background:var(--verde);color:#06210f;border:0}   /* alternativa certa */
-button.no{background:#e5484d;color:#fff;border:0}            /* alternativa errada escolhida */
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem;margin-top:1rem}
+.grade .cartao{margin-top:0}
+.item{border-top:1px solid var(--c2);padding:.9rem 0}
 table{width:100%;border-collapse:collapse}
-th,td{text-align:left;padding:.6rem .4rem;border-bottom:1px solid var(--borda)}
-tr.eu td{color:var(--verde);font-weight:700}                 /* linha do próprio aluno no ranking */
-/* Parte 3: campos de texto grande e seleção. */
-textarea,select{width:100%;font:inherit;padding:.7rem .9rem;border-radius:.8rem;border:1px solid var(--borda);background:#0e1527;color:var(--texto)}
-textarea{min-height:110px;resize:vertical}
-.item{border-top:1px solid var(--borda);padding:.9rem 0}
+th,td{text-align:left;padding:.65rem .4rem;border-bottom:1px solid var(--c2)}
+tr.eu td{color:var(--verde);font-weight:700}   /* linha do próprio aluno no ranking */

@@ -57,35 +57,56 @@ export default function Entrada() {
   }
 
   return (
-    <main className="pagina" style={{ maxWidth: 460 }}>
-      <h1>Aprender para Jogar</h1>
-      <p>Aprender não precisa ser uma obrigação. Pode ser uma aventura.</p>
+    <main className="pagina">
+      {/* Barra do topo com a marca */}
+      <header className="barra-topo">
+        <span className="marca"><b>APJ</b>Aprender para Jogar</span>
+        <span className="marker">pronto para o nível 1?</span>
+      </header>
 
-      <div className="cartao">
-        <div className="coluna" style={{ marginTop: 0 }}>
-          <button className="sec" onClick={() => social('google')}>Entrar com Google</button>
-          <button className="sec" onClick={() => social('azure')}>Entrar com Microsoft</button>
+      <section className="hero">
+        {/* Lado esquerdo: mensagem principal. Edite os textos aqui. */}
+        <div>
+          <p className="marker" style={{ fontSize: '1.5rem' }}>Bem-vindo(a), jogador(a)!</p>
+          <h1>Aprender não precisa ser <span className="sublinhado">obrigação.</span> Pode ser <span className="verde">aventura.</span></h1>
+          <p style={{ margin: '1.1rem 0 1.5rem', maxWidth: '48ch' }}>Estude no seu ritmo, ganhe XP a cada acerto, suba de nível e dispute o ranking com os colegas.</p>
+          <div className="notas"><span className="nota">+XP a cada acerto!</span><span className="nota verde">escolha qualquer assunto</span></div>
         </div>
 
-        <form ref={form} onSubmit={enviar} className="coluna">
-          {/* Campos extras que só aparecem no cadastro */}
-          {modo === 'criar' && <>
-            <input name="nome" placeholder="Seu nome" required />
-            <input name="usuario" placeholder="@usuario (como os professores vão te achar)" required />
-          </>}
-          <input name="email" type="email" placeholder="E-mail" required />
-          <input name="senha" type="password" placeholder="Senha (mínimo 6 caracteres)" minLength={6} required />
-          <button type="submit">{modo === 'entrar' ? 'Entrar' : 'Criar conta'}</button>
-        </form>
-
-        <div className="coluna">
-          <button className="sec" onClick={() => { setModo(modo === 'entrar' ? 'criar' : 'entrar'); setAviso('') }}>
-            {modo === 'entrar' ? 'Não tenho conta' : 'Já tenho conta'}
-          </button>
-          {modo === 'entrar' && <button className="sec" onClick={recuperar}>Esqueci minha senha</button>}
+        {/* Lado direito: login, cadastro e recuperação de senha */}
+        <div className="cartao" style={{ marginTop: 0 }}>
+          <h2 style={{ fontSize: '1.6rem' }}>{modo === 'entrar' ? 'Entrar' : 'Criar conta'}</h2>
+          <div className="coluna">
+            <button className="sec" onClick={() => social('google')}>Entrar com Google</button>
+            <button className="sec" onClick={() => social('azure')}>Entrar com Microsoft</button>
+          </div>
+          <form ref={form} onSubmit={enviar} className="coluna">
+            {/* Campos extras que só aparecem no cadastro */}
+            {modo === 'criar' && <>
+              <input name="nome" placeholder="Seu nome" required />
+              <input name="usuario" placeholder="@usuario (como os professores vão te achar)" required />
+            </>}
+            <input name="email" type="email" placeholder="E-mail" required />
+            <input name="senha" type="password" placeholder="Senha (mínimo 6 caracteres)" minLength={6} required />
+            <button type="submit">{modo === 'entrar' ? 'Entrar' : 'Criar conta'}</button>
+          </form>
+          <div className="coluna">
+            <button className="sec" onClick={() => { setModo(modo === 'entrar' ? 'criar' : 'entrar'); setAviso('') }}>
+              {modo === 'entrar' ? 'Não tenho conta' : 'Já tenho conta'}
+            </button>
+            {modo === 'entrar' && <button className="sec" onClick={recuperar}>Esqueci minha senha</button>}
+          </div>
+          <p className="aviso" role="status">{aviso}</p>
         </div>
-        <p className="aviso" role="status">{aviso}</p>
-      </div>
+      </section>
+
+      {/* Cartões de apresentação */}
+      <section className="bento">
+        <div className="cartao"><div className="icone">🎮</div><h3>Jogue e aprenda</h3><p>Desafios por matéria, com correção na hora e explicação de cada resposta.</p></div>
+        <div className="cartao"><div className="icone">⭐</div><h3>Ganhe XP</h3><p>Cada acerto vale pontos. Quanto mais difícil, mais XP.</p></div>
+        <div className="cartao"><div className="icone">🏆</div><h3>Ranking saudável</h3><p>Compare sua evolução sem constrangimento: só o topo aparece.</p></div>
+        <div className="cartao"><div className="icone">👩‍🏫</div><h3>Fale com professores</h3><p>Envie dúvidas e receba respostas direto na plataforma.</p></div>
+      </section>
     </main>
   )
 }
