@@ -1,0 +1,36 @@
+/* Cores da marca: troque aqui para mudar o site inteiro. */
+:root{--verde:#2ee66b;--azul:#2f6bff;--fundo:#0b1220;--cartao:#141c30;--borda:#26304d;--texto:#eef2ff;--suave:#9aa7c7}
+*{box-sizing:border-box;margin:0}
+/* Fundo escuro com brilhos azul e verde, para o clima tecnológico. */
+body{min-height:100vh;font:16px/1.5 system-ui,sans-serif;color:var(--texto);
+  background:radial-gradient(900px 500px at 10% -10%,#1b3fa855,transparent),radial-gradient(700px 400px at 100% 0,#1fbf6b33,transparent),var(--fundo)}
+/* Coluna central onde fica o conteúdo das páginas. */
+.pagina{max-width:860px;margin:0 auto;padding:2rem 1.25rem}
+.cartao{background:var(--cartao);border:1px solid var(--borda);border-radius:1.2rem;padding:1.5rem;margin-top:1.25rem}
+h1{font-size:2rem;line-height:1.15}
+p{color:var(--suave)}
+/* Botões: o verde é o principal; a classe "sec" faz o botão secundário (só contorno). */
+button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:.8rem;padding:.7rem 1.1rem;background:var(--verde);color:#06210f}
+button.sec{background:transparent;color:var(--texto);border:1px solid var(--borda)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--azul);outline-offset:2px}
+input{width:100%;font:inherit;padding:.7rem .9rem;border-radius:.8rem;border:1px solid var(--borda);background:#0e1527;color:var(--texto)}
+.coluna{display:grid;gap:.7rem;margin-top:1rem}
+.topo{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+/* Barra de XP do aluno. */
+.barra{height:14px;border-radius:1rem;background:var(--borda);overflow:hidden;margin:.6rem 0}
+.barra i{display:block;height:100%;background:linear-gradient(90deg,var(--azul),var(--verde))}
+.aviso{margin-top:.8rem;color:var(--verde)}
+.nivel{font-size:3rem;font-weight:800;line-height:1}
+/* Parte 2: grades de matérias, botão-link, alternativas do quiz e tabelas. */
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+.botao{display:inline-block;text-decoration:none;font-weight:700;border-radius:.8rem;padding:.7rem 1.1rem;background:var(--verde);color:#06210f}
+.botao.sec{background:transparent;color:var(--texto);border:1px solid var(--borda)}
+button.ok{background:var(--verde);color:#06210f;border:0}   /* alternativa certa */
+button.no{background:#e5484d;color:#fff;border:0}            /* alternativa errada escolhida */
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:.6rem .4rem;border-bottom:1px solid var(--borda)}
+tr.eu td{color:var(--verde);font-weight:700}                 /* linha do próprio aluno no ranking */
+/* Parte 3: campos de texto grande e seleção. */
+textarea,select{width:100%;font:inherit;padding:.7rem .9rem;border-radius:.8rem;border:1px solid var(--borda);background:#0e1527;color:var(--texto)}
+textarea{min-height:110px;resize:vertical}
+.item{border-top:1px solid var(--borda);padding:.9rem 0}
