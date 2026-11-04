@@ -59,3 +59,39 @@ textarea{width:100%;font:inherit;padding:.9rem 1.1rem;border-radius:1.2rem;borde
 table{width:100%;border-collapse:collapse}
 th,td{text-align:left;padding:.65rem .4rem;border-bottom:1px solid var(--c2)}
 tr.eu td{color:var(--verde);font-weight:700}   /* linha do próprio aluno no ranking */
+
+/* ===== LAYOUT DO PAINEL (baseado no print de referência) ===== */
+/* Menu do topo: o link da página atual fica aceso em verde. */
+.nav{display:flex;gap:.2rem;flex-wrap:wrap}
+.nav a{color:var(--c4);text-decoration:none;padding:.45rem .85rem;border-radius:999px;font-weight:500}
+.nav a:hover{color:#fff}
+.nav a.ativo{background:#3cf08d22;color:var(--verde);box-shadow:inset 0 0 0 1px #3cf08d66}
+.logo{width:34px;height:23px;margin-right:.5rem;vertical-align:middle}
+.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--verde),#1b8f55);color:var(--verde-escuro);font-weight:800}
+/* Grade de 12 colunas: .c8 ocupa 8 colunas, .c4 ocupa 4, e assim por diante. No celular tudo empilha. */
+.painel-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:1.25rem}
+.painel-grid .cartao{margin-top:0}
+.c3{grid-column:span 3}.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}
+@media (max-width:900px){.painel-grid>*{grid-column:1/-1}}
+/* Cartão de boas-vindas. Para usar a ilustração da escola, salve a imagem como public/hero.jpg. */
+.hero-aluno{min-height:260px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:.9rem;
+  background:linear-gradient(90deg,#06141bf2 30%,#06141b88),url('/hero.jpg') center/cover,linear-gradient(135deg,#11212d,#0a2a22)}
+.hero-aluno h1{font-size:clamp(2.2rem,5vw,3.2rem)}
+/* Nível em hexágono. */
+.hex{position:relative;width:86px;height:98px;display:grid;place-items:center;flex:none;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(160deg,var(--verde),#1b8f55)}
+.hex::before{content:'';position:absolute;inset:3px;clip-path:inherit;background:var(--c0)}
+.hex div{position:relative;text-align:center;line-height:1}
+.hex small{display:block;color:var(--c4);font-size:.75rem}
+.hex strong{font:800 2rem 'Bricolage Grotesque',sans-serif;color:#fff}
+.linha{display:flex;align-items:center;gap:1rem}
+/* Seu Progresso: rosca de % geral e barras por matéria. */
+.progresso{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.lista-materias{display:grid;gap:.8rem;flex:1;min-width:200px}
+.materia-linha{display:grid;grid-template-columns:auto 1fr auto;gap:.7rem;align-items:center}
+.minibarra{grid-column:1/-1;height:8px;border-radius:999px;background:var(--c2);overflow:hidden}
+.minibarra i{display:block;height:100%;border-radius:999px;background:var(--verde)}
+.recente{display:grid;grid-template-columns:1fr auto auto;gap:.8rem;align-items:center;padding:.65rem 0;border-top:1px solid var(--c2)}
+.xp-ganho{color:var(--verde);font-weight:700}
+.em-breve{display:inline-block;font:.8rem 'Permanent Marker',cursive;background:var(--c5);color:var(--c0);padding:.15rem .6rem;border-radius:999px;transform:rotate(-3deg)}
+.banner{display:flex;align-items:center;justify-content:space-between;gap:1rem;text-decoration:none;color:inherit;background:linear-gradient(135deg,#0f3a2c,#11212d)}
+.banner .icone{font-size:4rem}
