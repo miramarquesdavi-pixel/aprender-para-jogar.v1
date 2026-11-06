@@ -41,7 +41,7 @@ export default async function Aluno() {
   }).filter((m) => m.total > 0)
 
   return (
-    <Painel titulo="Meu painel" semTitulo>
+    <Painel titulo="Meu painel" semTitulo cheia>
       <div className="painel-grid">
         {/* Boas-vindas */}
         <section className="cartao hero-aluno c8">
@@ -67,7 +67,7 @@ export default async function Aluno() {
           <h3>🏅 Seu progresso</h3>
           <div className="progresso">
             <div style={{ textAlign: 'center' }}>
-              <svg viewBox="0 0 100 100" width="150" height="150" role="img" aria-label={`${geral}% das perguntas acertadas`}>
+              <svg className="rosca" viewBox="0 0 100 100" role="img" aria-label={`${geral}% das perguntas acertadas`}>
                 <circle cx="50" cy="50" r="42" fill="none" stroke="#253745" strokeWidth="9" />
                 {/* 263.9 é o comprimento da circunferência; o traço verde cobre a parte que o aluno já fez. */}
                 <circle cx="50" cy="50" r="42" fill="none" stroke="#3cf08d" strokeWidth="9" strokeLinecap="round"
@@ -102,7 +102,7 @@ export default async function Aluno() {
         <section className="cartao c7">
           <h3>🕒 Atividades recentes</h3>
           {(ganhos ?? []).length === 0 && <p>Responda uma pergunta para começar o seu histórico.</p>}
-          {(ganhos ?? []).slice(0, 4).map((g, k) => (
+          {(ganhos ?? []).slice(0, 3).map((g, k) => (
             <div className="recente" key={k}>
               <span>✅ Acertou uma questão de {g.perguntas?.assuntos?.nome ?? 'uma atividade'}</span>
               <span className="xp-ganho">+{g.quantidade} XP</span>

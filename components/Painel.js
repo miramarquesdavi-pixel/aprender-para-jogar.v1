@@ -19,13 +19,13 @@ const Logo = () => (
   </svg>
 )
 
-export default async function Painel({ titulo, semTitulo, children }) {
+export default async function Painel({ titulo, semTitulo, cheia, children }) {
   const p = await pegarPerfil()
   // Conta as notificações ainda não lidas (o banco só entrega as da própria pessoa).
   const { count } = await criarClienteServidor()
     .from('notificacoes').select('id', { count: 'exact', head: true }).eq('lida', false)
   return (
-    <main className="pagina">
+    <main className={'pagina' + (cheia ? ' cheia' : '')}>
       <header className="barra-topo">
         <Link className="marca" href="/"><Logo />Aprender para Jogar</Link>
         <Nav itens={MENU[p.papel] ?? []} />
@@ -41,10 +41,10 @@ export default async function Painel({ titulo, semTitulo, children }) {
           <form action="/auth/sair" method="post"><button className="sec">Sair</button></form>
         </div>
       </header>
-      {/* semTitulo: a página do aluno tem a própria saudação, então não repete o título. */}
+      {/* cheia: faz a página caber inteira na janela, sem rolagem (veja globals.css). semTitulo: a página do aluno tem a própria saudação, então não repete o título. */}
       {!semTitulo && (
-        <div style={{ padding: '2rem 0 .25rem' }}>
-          <h1 style={{ fontSize: 'clamp(2rem,5vw,3rem)' }}>{titulo}</h1>
+        <div style={{ padding: '1rem 0 0' }}>
+          <h1 style={{ fontSize: 'clamp(1.6rem,4vw,2.3rem)' }}>{titulo}</h1>
           <p>{p.nome} · @{p.usuario}</p>
         </div>
       )}

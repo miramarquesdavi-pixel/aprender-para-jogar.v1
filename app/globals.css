@@ -95,3 +95,34 @@ tr.eu td{color:var(--verde);font-weight:700}   /* linha do próprio aluno no ran
 .em-breve{display:inline-block;font:.8rem 'Permanent Marker',cursive;background:var(--c5);color:var(--c0);padding:.15rem .6rem;border-radius:999px;transform:rotate(-3deg)}
 .banner{display:flex;align-items:center;justify-content:space-between;gap:1rem;text-decoration:none;color:inherit;background:linear-gradient(135deg,#0f3a2c,#11212d)}
 .banner .icone{font-size:4rem}
+
+/* ===== TELA CHEIA: o painel inicial cabe inteiro na janela, sem rolagem (computador) ===== */
+/* Tudo aqui usa "vh" (altura da janela), então os tamanhos encolhem sozinhos em janelas baixas. */
+.pagina.cheia{max-width:1440px;height:100dvh;display:flex;flex-direction:column;padding:.7rem 1rem;font-size:clamp(13px,2vh,16px)}
+.cheia .barra-topo{padding:.35rem .9rem;flex:none}
+/* 3 fileiras que dividem a altura que sobra; "minmax(0,1fr)" impede que o conteúdo estique a página. */
+.cheia .painel-grid{flex:1;min-height:0;margin-top:.7rem;gap:.7rem;grid-template-rows:minmax(0,1fr) minmax(0,1.35fr) minmax(0,1fr)}
+.cheia .cartao{min-height:0;overflow:hidden;padding:clamp(.55rem,1.8vh,1.1rem)}
+.cheia h1{font-size:clamp(1.5rem,5.2vh,2.8rem)}
+.cheia h3{font-size:clamp(1rem,2.4vh,1.25rem);margin:0 0 .25rem}
+.cheia .hero-aluno{min-height:0;gap:clamp(.3rem,1.4vh,.9rem)}
+.cheia .hex{width:clamp(54px,11vh,84px);height:clamp(62px,12.5vh,96px)}
+.cheia .hex strong{font-size:clamp(1.3rem,3.6vh,2rem)}
+.cheia .icone{font-size:clamp(1.4rem,4.5vh,2.2rem);line-height:1}
+.cheia .barra{height:12px;margin:.4rem 0}
+.cheia .c6{display:flex;flex-direction:column}
+.cheia .progresso{flex:1;min-height:0;gap:1rem;flex-wrap:nowrap}
+.cheia .rosca{height:clamp(78px,17vh,150px);width:auto}
+/* Matérias em duas colunas para caberem todas. */
+.cheia .lista-materias{grid-template-columns:1fr 1fr;gap:.35rem 1rem;min-width:0}
+.cheia .materia-linha{gap:.2rem .5rem}
+.cheia .minibarra{height:6px}
+.cheia .recente{padding:.35rem 0}
+.cheia .banner .icone{font-size:clamp(2rem,9vh,4rem)}
+/* Celular ou janela muito baixa: não dá para caber tudo, então volta ao normal, com rolagem. */
+@media (max-width:900px),(max-height:560px){
+  .pagina.cheia{height:auto;display:block}
+  .cheia .painel-grid{grid-template-rows:none}
+  .cheia .cartao{overflow:visible}
+  .cheia .progresso{flex-wrap:wrap}
+}
